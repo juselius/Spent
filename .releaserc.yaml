@@ -1,0 +1,41 @@
+branches:
+- main
+- master
+- name: develop
+  prerelease: true
+
+plugins:
+- '@semantic-release/commit-analyzer'
+- '@semantic-release/release-notes-generator'
+- - '@semantic-release/changelog'
+  - changelogFile: RELEASE_NOTES.md
+    changelogTitle: "# Changelog"
+- - 'semantic-release-dotnet'
+  - paths: [ "src/*.fsproj", "src/*/*.fsproj" ]
+- - '@semantic-release/exec'
+  - generateNotesCmd: "echo ${nextRelease.version} > .version"
+- - '@semantic-release/git'
+  - message: "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+    assets: [ "RELEASE_NOTES.md", ".version", "src/*.fsproj", "src/*/*.fsproj" ]
+- - '@semantic-release/gitlab'
+  - assets: []
+
+analyzeCommits:
+- path: "@semantic-release/commit-analyzer"
+  releaseRules:
+  - type: "fix"
+    release: "patch"
+  - type: "patch"
+    release: "patch"
+  - type: "feat"
+    release: "minor"
+  - type: "feature"
+    release: "minor"
+  - type: "minor"
+    release: "minor"
+  - type: "breaking"
+    release: "major"
+  - type: "major"
+    release: "major"
+
+
