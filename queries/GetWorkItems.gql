@@ -1,5 +1,5 @@
 query GetWorkItems {
-  group(fullPath: "oceanbox") {
+  group(fullPath: "org") {
     workItems {
       nodes {
         id

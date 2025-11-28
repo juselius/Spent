@@ -1,6 +1,8 @@
 [<RequireQualifiedAccess>]
 module rec GitLab.Data.GraphQLClient.GetWorkItems
 
+type InputVariables = { group: string }
+
 /// A list of nodes.
 type WorkItem = {
     /// Global ID of the work item.

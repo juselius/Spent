@@ -121,12 +121,12 @@ type GraphqlClient private (httpClient: HttpClient, url: string) =
         Async.RunSynchronously (this.CreateTimelogAsync input)
 
 
-    member _.GetWorkItemsAsync() =
+    member _.GetWorkItemsAsync(input: GetWorkItems.InputVariables) =
         async {
             let query =
                 """
-                query GetWorkItems {
-                  group(fullPath: "oceanbox") {
+                query GetWorkItems($group: ID!){
+                  group(fullPath: $group) {
                     workItems {
                       nodes {
                         id
@@ -143,7 +143,7 @@ type GraphqlClient private (httpClient: HttpClient, url: string) =
             """
 
             let inputJson =
-                JsonConvert.SerializeObject ({ query = query; variables = None }, settings)
+                JsonConvert.SerializeObject ({ query = query; variables = Some input }, settings)
             let! response =
                 httpClient.PostAsync (url, new StringContent (inputJson, Encoding.UTF8, "application/json"))
                 |> Async.AwaitTask
@@ -173,5 +173,5 @@ type GraphqlClient private (httpClient: HttpClient, url: string) =
                 return Error response.errors
         }
 
-    member this.GetWorkItems() =
-        Async.RunSynchronously (this.GetWorkItemsAsync ())
+    member this.GetWorkItems(input: GetWorkItems.InputVariables) =
+        Async.RunSynchronously (this.GetWorkItemsAsync input)
