@@ -7,26 +7,38 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = false
 
+[*.js]
+indent_size = 2
+max_line_length = 80
+
+[*.scss]
+indent_size = 2
+max_line_length = 80
+
+[*.nix]
+indent_size = 2
+max_line_length= 80
+
+[*.scss]
+indent_size = 2
+max_line_length = 80
+
 [*.fs]
-max_line_length=120
-# Feliz style
-fsharp_single_argument_web_mode=true
-fsharp_space_before_colon=false
-fsharp_max_if_then_else_short_width=60
-fsharp_max_infix_operator_expression=50
-fsharp_max_record_width=70
-fsharp_max_record_number_of_items=1
-fsharp_max_array_or_list_width=70
-fsharp_max_array_or_list_number_of_items=1
-fsharp_max_value_binding_width=70
-fsharp_max_function_binding_width=40
-fsharp_max_dot_get_expression_width=50
-fsharp_multiline_block_brackets_on_same_column=true
-fsharp_newline_between_type_definition_and_members=false
-fsharp_max_elmish_width=40
-fsharp_align_function_signature_to_indentation=false
-fsharp_alternative_long_member_definitions=false
-fsharp_multi_line_lambda_closing_newline=false
-fsharp_disable_elmish_syntax=false
-fsharp_keep_indent_in_branch=false
-fsharp_blank_lines_around_nested_multiline_expressions=false
+max_line_length= 120
+
+fsharp_max_if_then_else_short_width = 60
+fsharp_max_infix_operator_expression = 80
+
+fsharp_space_before_uppercase_invocation = true
+fsharp_blank_lines_around_nested_multiline_expressions = false
+fsharp_newline_between_type_definition_and_members = false
+fsharp_multiline_bracket_style = stroustrup
+fsharp_multi_line_lambda_closing_newline = true
+
+fsharp_array_or_list_multiline_formatter = character_width
+fsharp_max_array_or_list_width = 70
+fsharp_max_array_or_list_number_of_items = 3
+
+fsharp_record_multiline_formatter = number_of_items
+fsharp_max_record_number_of_items = 3
+fsharp_max_record_width = 70
