@@ -82,5 +82,7 @@ in
     ];
 
     NPINS_DIRECTORY = "nix";
+
+    DOTNET_ROOT = "${dotnet-sdk}/share/dotnet";
   };
 }
