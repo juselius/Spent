@@ -10,7 +10,6 @@
     <File Path="LICENSE" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="Build.fsproj" />
   <Project Path="src/Spent.fsproj" />
   <Project Path="test/Tests.fsproj" />
 </Solution>
