@@ -73,6 +73,7 @@ in
 
   shell = pkgs.mkShell {
     packages = with pkgs; [
+      just
       npins
       snowflaqe
       fantomas
