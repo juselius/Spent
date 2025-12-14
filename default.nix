@@ -84,5 +84,13 @@ in
     NPINS_DIRECTORY = "nix";
 
     DOTNET_ROOT = "${dotnet-sdk}/share/dotnet";
+
+    passthru = pkgs.lib.mapAttrs (name: value: pkgs.mkShellNoCC (value // { inherit name; })) {
+      spent-cli = {
+        packages = [
+          spent
+        ];
+      };
+    };
   };
 }
